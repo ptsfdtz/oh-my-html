@@ -25,9 +25,7 @@ function loadPage(url) {
             }
             return response.text();
         })
-        .then(html => {
-            contentDiv.innerHTML = html;
-        })
+        .then(html => { contentDiv.innerHTML = html })
         .catch(error => {
             contentDiv.innerHTML = '<p>加载失败，请重试。</p>';
             console.error(error);
