@@ -47,6 +47,7 @@ body {
         border-radius: 50%;
     }
 
+    /* 边框旋转特效 */
     .circle {
         box-sizing: border-box;
         width: 76px;

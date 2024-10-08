@@ -18,8 +18,6 @@ function loadPage(url) {
             break;
     }
 
-    contentDiv.innerHTML = '<p>加载中...</p>'; // 显示加载指示器
-
     fetch(page)
         .then(response => {
             if (!response.ok) {
