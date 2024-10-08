@@ -5,18 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <script src="src/sctript.js"></script>
+    <link rel="stylesheet" href="src/style.css">
+    <script src="src/sctript.js" defer></script>
 </head>
 
 <body>
     <div id="content">You are on the page.</div>
+    <div class="navigation">
+        <button type="button" onclick="navigateTo('/')">
+            <?xml version="1.0" ?>
+            <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg
+                class="home-icon" height="16px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1"
+                viewBox="0 0 32 32" width="16px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path
+                    d="M30.938,16L18,1.188C17.453,0.594,16.938,0,16,0s-1.453,0.594-2,1.188l-6,6.87V4c0-1.104-0.896-2-2-2S4,2.896,4,4v8.637  L1.063,16C0.406,16.734,0,17.188,0,18c0,1.016,0.797,2,2,2h2v10c0,1.1,0.9,2,2,2h20c1.1,0,2-0.9,2-2V20h2c1.203,0,2-0.984,2-2  C32,17.188,31.594,16.734,30.938,16z M24,16v12h-4v-8h-8v8H8V16H6.373L16,4.979L25.627,16H24z" />
+            </svg>
+        </button>
+        <button type="button" onclick="navigateTo('/pageOne')">
+            <?xml version="1.0" ?><svg class="pageOne-icon" id="icon" viewBox="0 0 32 32" width="128px" height="128px"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: #fff;
+                        }
 
-    <div>
-        <nav>
-            <button type="button" onclick="navigateTo('/')">back to home</button>
-            <button type="button" onclick="navigateTo('/pageOne')">Go to Page One</button>
-            <button type="button" onclick="navigateTo('/pageTwo')">Go to Page Two</button>
-        </nav>
+                        .cls-2 {
+                            fill: none;
+                        }
+                    </style>
+                </defs>
+                <title />
+                <path d="M16,10V22h0V10m1-1H12v2h3V21H12v2h8V21H17V9Z" />
+                <rect class="cls-2" data-name="&lt;Transparent Rectangle&gt;" height="32" id="_Transparent_Rectangle_"
+                    width="32" />
+            </svg>
+        </button>
+        <button type="button" onclick="navigateTo('/pageTwo')">
+            <?xml version="1.0" ?><svg class="pageTwo-icon" id="icon" viewBox="0 0 32 32" width="128px" height="128px"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: none;
+                        }
+                    </style>
+                </defs>
+                <title />
+                <path d="M20,23H12V17a2,2,0,0,1,2-2h4V11H12V9h6a2,2,0,0,1,2,2v4a2,2,0,0,1-2,2H14v4h6Z" />
+                <rect class="cls-1" data-name="&lt;Transparent Rectangle&gt;" height="32" id="_Transparent_Rectangle_"
+                    width="32" />
+            </svg>
+        </button>
     </div>
 </body>
 

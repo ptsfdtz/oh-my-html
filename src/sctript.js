@@ -4,6 +4,8 @@ function loadPage(url) {
 
     switch (url) {
         case "/":
+            page = "pages/home/index.html";
+            break;
         case "#/":
             page = "pages/home/index.html";
             break;
