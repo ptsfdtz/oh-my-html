@@ -4,8 +4,6 @@ function loadPage(url) {
 
     switch (url) {
         case "/":
-            page = "pages/home/index.html";
-            break;
         case "#/":
             page = "pages/home/index.html";
             break;
@@ -20,21 +18,27 @@ function loadPage(url) {
             break;
     }
 
+    contentDiv.innerHTML = '<p>加载中...</p>'; // 显示加载指示器
+
     fetch(page)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Page not found');
+                throw new Error('页面未找到');
             }
             return response.text();
         })
         .then(html => {
             contentDiv.innerHTML = html;
         })
+        .catch(error => {
+            contentDiv.innerHTML = '<p>加载失败，请重试。</p>';
+            console.error(error);
+        });
 }
 
 function navigateTo(url) {
     window.location.hash = url;
-    loadPage(window.location.hash);
+    loadPage(url);
 }
 
 window.onload = function () {
