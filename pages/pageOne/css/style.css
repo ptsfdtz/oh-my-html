@@ -59,7 +59,7 @@ body {
     left: 3px;
     width: 24px;
     height: 24px;
-    background-color: #ffffff;
+    background-color: var(--sun-color);
     border-radius: 50%;
     transition: 0.3s ease;
 }
