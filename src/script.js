@@ -28,10 +28,11 @@ function loadPage(url) {
         .then(html => {
             contentDiv.innerHTML = html;
             contentDiv.querySelectorAll("script").forEach(script => {
-                const newScript = document.createElement("script");
+                const newScript = document.createElement("script"); //  在innerHTML中创建script标签
                 newScript.innerHTML = script.innerHTML;
                 document.body.appendChild(newScript);
             });
+            // 感谢温佬，拯救我的项目
         })
         .catch(error => {
             contentDiv.innerHTML = '<p>加载失败，请重试。</p>';

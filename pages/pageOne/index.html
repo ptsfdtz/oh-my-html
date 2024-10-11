@@ -25,7 +25,7 @@
             <div class="temperature">--°</div>
             <div class="info" id="info">
                 Wind: - - km/h <br />
-                Humidity: --%
+                weather: ---
             </div>
             <table class="preview">
                 <tbody>
@@ -43,10 +43,59 @@
     </div>
 
     <script>
+        const apiKey = '6a6d51d477f524d99b11f63da80dd504';
+        const city = 'Nanjing';
+        const units = 'metric';
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+
         document.getElementById("toggle-mode").addEventListener("click", function () {
             document.body.classList.toggle("day-mode");
         });
-        console.log("Hello World!");
+
+        // function getDate() {
+        //     fetch(weatherUrl)
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log(data);
+        //             console.log(data.main.temp);
+        //             console.log(data.weather[0].main)
+        //             console.log(data.wind.speed)
+        //             console.log()
+        //         })
+        //         .catch(error => console.log(error));
+        // }
+        // getDate();
+
+        function updateWeather() {
+            fetch(weatherUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const temperature = Math.round(data.main.temp);
+                    const weather = data.weather[0].main;
+                    const windSpeed = data.wind.speed;
+
+                    document.querySelector(".temperature").textContent = `${temperature}°`;
+                    document.querySelector("#info").innerHTML = `Wind: ${windSpeed} km/h <br />Weather: ${weather}`;
+
+                    const today = new Date();
+                    const tomorrow = new Date(today);
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+
+                    const options = { weekday: 'long' };
+                    const todayString = today.toLocaleDateString('en-US', options);
+                    const tomorrowString = tomorrow.toLocaleDateString('en-US', options);
+
+                    document.querySelector("#today").textContent = todayString;
+                    document.querySelector("#tomorrow").textContent = tomorrowString;
+
+                    const todayTemperature = Math.round(data.main.temp_min);
+                    const tomorrowTemperature = Math.round(data.main.temp_max);
+                    document.querySelector("#today-temperature").textContent = `${todayTemperature}° / ${tomorrowTemperature}°`;
+                })
+                .catch(error => console.log(error));
+        }
+        setInterval(updateWeather, 1000 * 60 * 10);
+        updateWeather();
     </script>
 </body>
 
