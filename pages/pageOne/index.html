@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/pages/pageOne/css/style.css" />
 </head>
 
-<body>
+<body class="weather-page">
     <input type="checkbox" id="toggle-mode" class="toggle-switch">
     <div class="frame">
         <div class="sun-and-moon">
@@ -46,6 +46,7 @@
         document.getElementById("toggle-mode").addEventListener("click", function () {
             document.body.classList.toggle("day-mode");
         });
+        console.log("Hello World!");
     </script>
 </body>
 

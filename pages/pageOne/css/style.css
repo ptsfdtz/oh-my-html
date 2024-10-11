@@ -29,13 +29,22 @@ body {
     height: 400px;
     margin-top: -200px;
     margin-left: -200px;
-    border-radius: 2px;
+    border-radius: 20px;
     box-shadow: 1px 2px 10px 0px var(--frame-shadow-color);
     background: var(--background-color);
     color: var(--text-color);
     font-family: 'Open Sans', Helvetica, sans-serif;
     font-weight: 300;
     overflow: hidden;
+}
+
+@media screen and (max-width: 470px) {
+
+    .frame {
+        width: 85.1%;
+        height: 364.219px;
+        left: 54.5%;
+    }
 }
 
 .toggle-switch {
@@ -145,6 +154,12 @@ body {
     background: #fff;
     left: 0;
     bottom: 0;
+}
+
+@media screen and (max-width: 470px) {
+    .front {
+        width: 364.219px;
+    }
 }
 
 .temperature {

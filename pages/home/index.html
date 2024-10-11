@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>homepage</title>
     <link rel="stylesheet" href="/pages/home/css/style.css" />
-    <script src="pages/home/js/script.js" defer></script>
 </head>
 
 <body>
@@ -36,12 +35,23 @@
                     <span class="parameter">stars</span>
                 </div>
                 <div class="box">
-                    <span class="followersValue">27</span>
+                    <span class="followersValue">--</span>
                     <span class="parameter">followers</span>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        const username = 'PTSFDTZ'
+
+        async function getUserData() {
+            const followersCount = (await (await fetch(`https://api.github.com/users/${username}`)).json()).followers;
+            document.querySelector('.followersValue').textContent = followersCount;
+            console.log(`Followers count: ${followersCount}`);
+        }
+
+        getUserData();
+    </script>
 </body>
 
 </html>

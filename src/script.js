@@ -25,7 +25,14 @@ function loadPage(url) {
             }
             return response.text();
         })
-        .then(html => { contentDiv.innerHTML = html })
+        .then(html => {
+            contentDiv.innerHTML = html;
+            contentDiv.querySelectorAll("script").forEach(script => {
+                const newScript = document.createElement("script");
+                newScript.innerHTML = script.innerHTML;
+                document.body.appendChild(newScript);
+            });
+        })
         .catch(error => {
             contentDiv.innerHTML = '<p>加载失败，请重试。</p>';
             console.error(error);
