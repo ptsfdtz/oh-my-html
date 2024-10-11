@@ -43,15 +43,25 @@
     </div>
 
     <script>
-        const apiKey = '6a6d51d477f524d99b11f63da80dd504';
-        const city = 'Nanjing';
-        const units = 'metric';
-        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
         document.getElementById("toggle-mode").addEventListener("click", function () {
             document.body.classList.toggle("day-mode");
+            clearInterval(autoModeInterval);
         });
 
+        function setMode() {
+            const hour = new Date().getHours();
+            const root = document.documentElement;
+            // console.log(hour);
+            if (hour >= 20 || hour < 6) {
+                // 夜间模式
+                root.classList.remove('day-mode');
+            } else {
+                // 日间模式
+                root.classList.add('day-mode');
+            }
+        }
+        // const autoModeInterval = setInterval(setMode, 3600000); 
+        setMode();
         // function getDate() {
         //     fetch(weatherUrl)
         //         .then(response => response.json())
@@ -65,7 +75,6 @@
         //         .catch(error => console.log(error));
         // }
         // getDate();
-
         function updateWeather() {
             fetch(weatherUrl)
                 .then(response => response.json())
@@ -73,14 +82,14 @@
                     const temperature = Math.round(data.main.temp);
                     const weather = data.weather[0].main;
                     const windSpeed = data.wind.speed;
-
+                    // console.log(temperature);
                     document.querySelector(".temperature").textContent = `${temperature}°`;
                     document.querySelector("#info").innerHTML = `Wind: ${windSpeed} km/h <br />Weather: ${weather}`;
-
+                    // console.log(weather);
                     const today = new Date();
                     const tomorrow = new Date(today);
                     tomorrow.setDate(tomorrow.getDate() + 1);
-
+                    // console.log(today);
                     const options = { weekday: 'long' };
                     const todayString = today.toLocaleDateString('en-US', options);
                     const tomorrowString = tomorrow.toLocaleDateString('en-US', options);
@@ -94,8 +103,10 @@
                 })
                 .catch(error => console.log(error));
         }
-        setInterval(updateWeather, 1000 * 60 * 10);
+
+        // setInterval(updateWeather, 1000 * 60 * 10);
         updateWeather();
+
     </script>
 </body>
 
