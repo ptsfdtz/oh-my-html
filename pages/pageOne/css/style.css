@@ -184,6 +184,20 @@ body {
     line-height: 20px;
 }
 
+@media screen and (max-width: 470px) {
+    .temperature {
+        margin-top: 10px;
+        font-size: 42px;
+        line-height: 70px;
+    }
+
+    .info {
+        margin: 27px 0 0 10px;
+        font-size: 15px;
+        line-height: 18px;
+    }
+}
+
 .today .tomorrow {
     font-size: 15px;
     line-height: 20px;
@@ -197,6 +211,15 @@ body {
     font-weight: 400;
     line-height: 20px;
     margin: 22px 20px 0 0;
+}
+
+@media screen and (max-width: 470px) {
+    .preview {
+        margin: 25px 10px 0 0;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
 }
 
 .preview td {
