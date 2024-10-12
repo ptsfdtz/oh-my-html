@@ -50,6 +50,7 @@
 
         document.getElementById("toggle-mode").addEventListener("click", function () {
             document.body.classList.toggle("day-mode");
+            clearInterval(autoModeInterval);
         });
 
         function setMode() {
@@ -57,10 +58,8 @@
             const root = document.documentElement;
 
             if (hour >= 20 || hour < 6) {
-                // 夜间模式
                 root.classList.remove('day-mode');
             } else {
-                // 日间模式
                 root.classList.add('day-mode');
             }
         }
@@ -108,7 +107,8 @@
         }
         // setInterval(updateWeather, 1000 * 60 * 10);
         updateWeather();
-        setMode();
+        // setInterval(setMode, 1000 * 60 * 60);
+        // setMode();
     </script>
 </body>
 
