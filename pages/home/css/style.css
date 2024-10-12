@@ -3,7 +3,7 @@ body {
     background: #282c34;
 }
 
-.frame {
+.homepage-frame {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -21,7 +21,7 @@ body {
 
 @media screen and (max-width: 470px) {
 
-    .frame {
+    .homepage-frame {
         width: 85.1%;
         height: 364.219px;
         left: 54.5%;

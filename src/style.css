@@ -37,7 +37,7 @@ body {
     height: 5%;
 }
 
-button {
+.main-button {
     background-color: var(--color-primary);
     color: white;
     border: none;
@@ -50,7 +50,7 @@ button {
     height: 90%;
 }
 
-button svg {
+.main-button svg {
     fill: white;
 
     .home-icon {

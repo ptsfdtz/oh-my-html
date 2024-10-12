@@ -18,6 +18,7 @@ function loadPage(url) {
             break;
     }
 
+
     fetch(page)
         .then(response => {
             if (!response.ok) {
@@ -34,15 +35,12 @@ function loadPage(url) {
             });
             // 感谢温佬，拯救我的项目
         })
-        .catch(error => {
-            contentDiv.innerHTML = '<p>加载失败，请重试。</p>';
-            console.error(error);
-        });
 }
 
 function navigateTo(url) {
     window.location.hash = url;
     loadPage(url);
+    window.location.reload();
 }
 
 window.onload = function () {

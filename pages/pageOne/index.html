@@ -10,7 +10,7 @@
 
 <body class="weather-page">
     <input type="checkbox" id="toggle-mode" class="toggle-switch">
-    <div class="frame">
+    <div class="page-one-frame">
         <div class="sun-and-moon">
             <div class="crater" style="top: 10px; left: 15px; width: 10px; height: 10px;"></div>
             <div class="crater" style="top: 25px; left: 35px; width: 8px; height: 8px;"></div>
@@ -24,8 +24,8 @@
         <div class="front">
             <div class="temperature">--°</div>
             <div class="info" id="info">
-                Wind: - - km/h <br />
-                weather: ---
+                Wind: -- km/h <br />
+                Weather: ---
             </div>
             <table class="preview">
                 <tbody>
@@ -48,34 +48,25 @@
         const units = 'metric';
         const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
+        const userToggledMode = false;
+
         document.getElementById("toggle-mode").addEventListener("click", function () {
-            document.body.classList.toggle("day-mode");
-            clearInterval(autoModeInterval);
+            const isDayMode = document.body.classList.toggle("day-mode");
+            userToggledMode = true;
         });
 
-        function setMode() {
-            const hour = new Date().getHours();
-            const root = document.documentElement;
+        // function setMode() {
+        //     if (userToggledMode) return;
 
-            if (hour >= 20 || hour < 6) {
-                root.classList.remove('day-mode');
-            } else {
-                root.classList.add('day-mode');
-            }
-        }
-        // function getDate() {
-        //     fetch(weatherUrl)
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             console.log(data);
-        //             console.log(data.main.temp);
-        //             console.log(data.weather[0].main)
-        //             console.log(data.wind.speed)
-        //             console.log()
-        //         })
-        //         .catch(error => console.log(error));
+        //     const hour = new Date().getHours();
+        //     const root = document.documentElement;
+
+        //     if (hour >= 20 || hour < 6) {
+        //         root.classList.remove('day-mode');
+        //     } else {
+        //         root.classList.add('day-mode');
+        //     }
         // }
-        // getDate();
 
         function updateWeather() {
             fetch(weatherUrl)
@@ -103,12 +94,15 @@
                     const tomorrowTemperature = Math.round(data.main.temp_max);
                     document.querySelector("#today-temperature").textContent = `${todayTemperature}° / ${tomorrowTemperature}°`;
                 })
-                .catch(error => console.log(error));
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                    document.querySelector(".temperature").textContent = `N/A`;
+                    document.querySelector("#info").innerHTML = `Unable to retrieve weather data`;
+                });
         }
-        // setInterval(updateWeather, 1000 * 60 * 10);
+
         updateWeather();
-        // setInterval(setMode, 1000 * 60 * 60);
-        // setMode();
+        // setMode(); 
     </script>
 </body>
 

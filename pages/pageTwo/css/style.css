@@ -1,0 +1,59 @@
+:root {
+    --primary-backgroud-color: white;
+    --primary-font-color: rgb(255, 255, 255);
+    --primary-button-color: rgb(112, 112, 112);
+    --primary-button-hover-color: rgb(63, 63, 63);
+}
+
+body {
+    background-color: #282c34;
+}
+
+.page-two-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    margin-top: -200px;
+    margin-left: -200px;
+    border-radius: 20px;
+    box-shadow: 1px 2px 10px 0px black;
+    background-color: var(--primary-backgroud-color);
+}
+
+.buttons-frame {
+    margin-top: 210px;
+    text-align: center;
+    border-top: 1px solid #000000;
+
+    & .clear-button,
+    & .save-button {
+        width: 80px;
+        height: 30px;
+        border-radius: 15px;
+        border: none;
+        color: var(--primary-font-color);
+        background-color: var(--primary-button-color);
+        transition: background-color 0.3s ease;
+    }
+
+    & .clear-button:hover {
+        background-color: var(--primary-button-hover-color);
+        /* 悬停时变为红色 */
+    }
+
+    & .save-button:hover {
+        background-color: var(--primary-button-hover-color);
+        /* 悬停时变为绿色 */
+    }
+
+    & .clear-button {
+        margin-top: 0.5%;
+        margin-right: 10%;
+    }
+
+    & .save-button {
+        margin-left: 45%;
+    }
+}
