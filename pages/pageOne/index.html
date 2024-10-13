@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8" />
@@ -55,18 +55,18 @@
             userToggledMode = true;
         });
 
-        // function setMode() {
-        //     if (userToggledMode) return;
+        function setMode() {
+            if (userToggledMode) return;
 
-        //     const hour = new Date().getHours();
-        //     const root = document.documentElement;
+            const hour = new Date().getHours();
+            const root = document.documentElement;
 
-        //     if (hour >= 20 || hour < 6) {
-        //         root.classList.remove('day-mode');
-        //     } else {
-        //         root.classList.add('day-mode');
-        //     }
-        // }
+            if (hour >= 24 || hour < 6) {
+                root.classList.remove('day-mode');
+            } else {
+                root.classList.add('day-mode');
+            }
+        }
 
         function updateWeather() {
             fetch(weatherUrl)

@@ -40,12 +40,10 @@ body {
 
     & .clear-button:hover {
         background-color: var(--primary-button-hover-color);
-        /* 悬停时变为红色 */
     }
 
     & .save-button:hover {
         background-color: var(--primary-button-hover-color);
-        /* 悬停时变为绿色 */
     }
 
     & .clear-button {

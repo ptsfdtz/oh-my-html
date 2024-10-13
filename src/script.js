@@ -1,4 +1,4 @@
-function loadPage(url) {
+async function loadPage(url) {
     const contentDiv = document.getElementById("content");
     let page = "";
 
@@ -19,22 +19,40 @@ function loadPage(url) {
     }
 
 
-    fetch(page)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('页面未找到');
-            }
-            return response.text();
-        })
-        .then(html => {
-            contentDiv.innerHTML = html;
-            contentDiv.querySelectorAll("script").forEach(script => {
-                const newScript = document.createElement("script"); //  在innerHTML中创建script标签
-                newScript.innerHTML = script.innerHTML;
-                document.body.appendChild(newScript);
-            });
-            // 感谢温佬，拯救我的项目
-        })
+    try {
+        const res = await fetch(page);
+
+        let html = "something went wrong";
+        if (!res.ok) html = '页面未找到'
+        html = await res.text();
+
+        contentDiv.innerHTML = html;
+        contentDiv.querySelectorAll("script").forEach(script => {
+            const newScript = document.createElement("script"); //  在innerHTML中创建script标签
+            newScript.innerHTML = script.innerHTML;
+            document.body.appendChild(newScript);
+        });
+    } catch (err) {
+        console.error(err);
+        contentDiv.innerHTML = "something went wrong";
+    }
+
+    // fetch(page)
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error('页面未找到');
+    //         }
+    //         return response.text();
+    //     })
+    //     .then(html => {
+    //         contentDiv.innerHTML = html;
+    //         contentDiv.querySelectorAll("script").forEach(script => {
+    //             const newScript = document.createElement("script"); //  在innerHTML中创建script标签
+    //             newScript.innerHTML = script.innerHTML;
+    //             document.body.appendChild(newScript);
+    //         });
+    //         // 感谢温佬，拯救我的项目
+    //     })
 }
 
 function navigateTo(url) {
