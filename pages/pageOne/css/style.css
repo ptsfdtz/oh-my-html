@@ -172,14 +172,14 @@ body {
 
 .temperature {
     float: left;
-    margin-left: 20px;
+    margin-left: 13px;
     font-size: 45px;
     line-height: 90px;
 }
 
 .info {
     float: left;
-    margin: 25px 0 0 13px;
+    margin: 25px 0 0 10px;
     font-size: 15px;
     line-height: 20px;
 }

@@ -1,8 +1,16 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 :root {
     --primary-backgroud-color: white;
     --primary-font-color: rgb(255, 255, 255);
     --primary-button-color: rgb(112, 112, 112);
     --primary-button-hover-color: rgb(63, 63, 63);
+    --primary-pad-bcakground-color: #c6c6c6;
 }
 
 body {
@@ -23,9 +31,9 @@ body {
 }
 
 .buttons-frame {
-    margin-top: 210px;
     text-align: center;
-    border-top: 1px solid #000000;
+    /* border-top: 1px solid #000000; */
+    margin-top: 10px;
 
     & .clear-button,
     & .save-button {
@@ -47,11 +55,22 @@ body {
     }
 
     & .clear-button {
-        margin-top: 0.5%;
-        margin-right: 10%;
+        margin-top: 0;
+        margin-right: 9%;
     }
 
     & .save-button {
-        margin-left: 45%;
+        margin-left: 40%;
     }
+}
+
+.signature-pad {
+    display: flex;
+    margin: 5% 5% 0 5%;
+    width: 90%;
+    height: 330px;
+    background-color: var(--primary-pad-bcakground-color);
+    border: 2px solid #000000;
+    border-radius: 10px;
+    box-shadow: 1px 2px 10px 0px var(--primary-button-hover-color);
 }
