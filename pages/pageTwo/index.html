@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pageTwo</title>
-    <link rel="stylesheet" href="pages/pageTwo/css/style.css">
+    <link rel="stylesheet" href="/pages/pageTwo/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -15,10 +19,67 @@
             </canvas>
             <div class="buttons-frame">
                 <button type="button" id="clear-button" class="clear-button">clear</button>
+                <input type="color" name="color-picker" id="color-picker" class="color-picker">
                 <button type="button" id="save-button" class="save-button">save</button>
             </div>
         </div>
     </div>
+    <script>
+        console.log('pageTwo loaded');
+        const canvas = document.getElementById('signature-pad');
+        const clearButton = document.getElementById('clear-button');
+        const saveButton = document.getElementById('save-button');
+        const colorPicker = document.getElementById('color-picker');
+        const context = canvas.getContext('2d');
+
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+
+        context.strokeStyle = colorPicker.value;
+
+        function getMousePosition(event) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top,
+            };
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            mouseStatus = true;
+            const position = getMousePosition(e);
+            context.beginPath();
+            context.moveTo(position.x, position.y);
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (mouseStatus) {
+                const position = getMousePosition(e);
+                context.lineTo(position.x, position.y);
+                context.stroke();
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            mouseStatus = false;
+        });
+
+        clearButton.addEventListener('click', () => {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        saveButton.addEventListener('click', () => {
+            const dataURL = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = dataURL;
+            link.download = 'signature.png';
+            link.click();
+        });
+
+        colorPicker.addEventListener('input', (e) => {
+            context.strokeStyle = e.target.value;
+        });
+    </script>
 </body>
 
 </html>
